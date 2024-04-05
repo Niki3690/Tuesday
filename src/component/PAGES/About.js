@@ -14,8 +14,8 @@ const About = () => {
         staggerChildren: 0.2,
         duration: 1.5,
       },
-    },
-  };
+    }
+  };  
   return (
     <motion.div
       initial="hidden"
