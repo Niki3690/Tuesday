@@ -1,12 +1,23 @@
 import React from "react";
-import {
-  useSelector,
-  useDispatch,
-} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { remove, increment, decrement } from "../STORE/CartSlice";
-import Star from "./Star";
+import { motion, Variants } from "framer-motion";
 
 const Cart = () => {
+  let Animation: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 100,
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.2,
+        duration: 1.5,
+      },
+    },
+  };
   let names = useSelector((state) => state.cart);
   let dispatch = useDispatch();
 
@@ -35,7 +46,9 @@ const Cart = () => {
         }}
       >
         {names.length === 0 ? (
-          <h1
+          <motion.h1 initial="hidden"
+          animate="show"
+          variants={Animation}
             style={{
               gridColumn: "1/-1",
               textAlign: "center",
@@ -44,7 +57,7 @@ const Cart = () => {
             }}
           >
             No items in cart
-          </h1>
+          </motion.h1>
         ) : (
           " "
         )}
@@ -92,11 +105,9 @@ const Cart = () => {
                     >
                       RemovedToCart
                     </a>
-                    <Star />
                   </div>
                 </div>
               </div>
-            
             </>
           );
         })}

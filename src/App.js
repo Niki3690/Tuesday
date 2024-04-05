@@ -33,7 +33,7 @@ const App = () => {
         </BrowserRouter>
       </Provider>
 
-      <img src="https://picsum.photos/200/300" style={{height:300,width:300}} />
+      {/* <img src="https://picsum.photos/200/300" style={{height:300,width:300}} /> */}
     </div>
   );
 };
